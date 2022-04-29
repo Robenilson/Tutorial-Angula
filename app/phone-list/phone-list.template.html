@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+
+
+    <nav class=" col-md-10 navbar navbar-light bg-light">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" ng-model="$ctrl.query"  type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <label class="input-group-text" for="inputGroupSelect01">Sort by:</label>
+
+        <select class="custom-select form-control mr-sm-2"   ng-model="$ctrl.orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+        </select>
+
+      </form>
+    </nav>
+
+
+    <div class="col-md-10">
+      <ul class="phones">
+        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp"
+            class="thumbnail phone-list-item">
+          <a href="#!/phones/{{phone.id}}" class="thumb">
+            <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+          </a>
+          <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
+          <p>{{phone.snippet}}</p>
+      
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
